@@ -15,7 +15,35 @@
     font-size: 35px
   }
   body {
-    background-image: url("bg.jpg")}
+    background-image: url('static/img/sunset.jpg');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  a:link {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+    font-family: Tahoma, Geneva, sans-serif;
+  }
+  
+  a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:active {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+  }
   </style>
 
 <script type="text/javascript">
@@ -50,7 +78,7 @@
     }
     m = checkTime(m);
     document.getElementById('clock').innerHTML =
-    "It is " + "\n" + h % 12 + ":" + m + " on " + weekday + " " + month + "/" + day;
+    "It is " + "\n" + h % 12 + ":" + m + " on " + weekday + " " + (month+1) + "/" + (day+1);
     var t = setTimeout(startTime, 500);
   }
   function checkTime(i) {
@@ -139,10 +167,10 @@
     for(var i = 0; i < wordsDown.length; i+=1){
         var comparisonWord = wordsDown[i];
         
-        if(!(currentWord.right < comparisonWord.left||
-             currentWord.left > comparisonWord.right ||
+        if(!(currentWord.right + 3 < comparisonWord.left - 3||
+             currentWord.left - 3> comparisonWord.right + 3 ||
              currentWord.bottom < comparisonWord.top ||
-             currentWord.top > comparisonWord.bottom)){
+             currentWord.top > comparisonWord.bottom )){
             
             return true;
         }
@@ -170,7 +198,7 @@ colorLinks();
 
 function colorLinks(hex)
 {
-    colors = ["#ff85a2", "#39ffd0", "#ffa585", "#85ffa5", "#a585ff", "#ffe285"];
+    colors = ["#ff8080", "#ffb380", "#ff80bf", "#ffbf80", "#ffaa80", "#ff8080", "#ff8c66", "#ffb366", "ffcccc", "#ff8533", "#e65c00", "ff8c1a", "#ff6666"];
     var links = document.getElementsByTagName("a");
     for(var i=0;i<links.length;i++)
     {
