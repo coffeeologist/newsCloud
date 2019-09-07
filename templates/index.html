@@ -18,28 +18,9 @@
     background-color: #EDEDED;
   }
   a:link {
-    color: pink;
     background-color: transparent;
     text-decoration: none;
     font-family: Tahoma, Geneva, sans-serif;
-  }
-  
-  a:visited {
-    color: pink;
-    background-color: transparent;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: red;
-    background-color: transparent;
-    text-decoration: none;
-  }
-  
-  a:active {
-    color: red;
-    background-color: transparent;
-    text-decoration: none;
   }
   </style>
 
@@ -115,8 +96,8 @@
   cloud.style.position = "relative";
 
   var startPoint = {
-    x: cloud.offsetWidth / 2,
-    y: cloud.offsetHeight / 2 + 400
+    x: window.innerWidth/2,
+    y: window.innerHeight /2  - 50
   };
 
   var wordsDown = [];
@@ -178,7 +159,7 @@
   (function placeWords() {
       for (var i = 0; i < words.length; i++) {
           var word = createWordObject(words[i]);
-          for (var j = 0; j < 360*4; j++) {
+          for (var j = 0; j < 360*3; j++) {
               if (spiral(j, function() {
                       if (!intersect(word, startPoint.x + x, startPoint.y + y)) {
                           placeWord(word, startPoint.x + x, startPoint.y + y);
@@ -193,7 +174,7 @@
 
 colorLinks();
 
-function colorLinks(hex)
+function colorLinks()
 {
     colors = ["#ff85a2", "#39ffd0", "#ffa585", "#85ffa5", "#a585ff", "#ffe285"];
     var links = document.getElementsByTagName("a");
@@ -203,8 +184,10 @@ function colorLinks(hex)
         {
             links[i].style.color = colors[i % colors.length];  
         }
-    }  
+    }
 }
+
+
   
   // var groupText = document.createElement("div");
 /*   for (var i = 0; i < words.length; i++) {
