@@ -1,92 +1,14 @@
-THRESH: 5.15599128540305
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-PASSED
-THRESH: 10.765141612200436
-PASSED
-PASSED
+SHOULD BE AN EMPTY DATA: 
+[]
+DATACANDIDATES: 
+{'Trump Administration': 10, 'Unauthorized Immigrants': 3, 'California Automakers': 4, 'Contradicts Weather': 5, 'Supervised Injection': 4, 'Adolescence Adulthood': 3, 'Addiction Treatment': 4, 'Attorneys General': 6, 'Writers Disabilities': 3, 'Hurricane Dorian': 6, 'Photographer Common': 3, 'Extinctions Humans': 4, 'Marijuana Producer': 3, 'Scientists Access': 4, 'Touchingly Parents': 3, 'Documentary Linda': 4, 'Choice Competition': 3, 'Margaret Atwood': 5, 'Facebook Google': 5, 'Health Databanks': 4, 'Confusing Moments': 3, 'Rushdie Quichotte': 3, 'Essay Collections': 3, 'Chapter Everybody': 3, 'Families Students': 3, 'Threat Alabama': 5, 'Rights Advocates': 3, 'Options Limited': 4, 'Ella Fitzgerald': 4, 'Economic Jitters': 3, 'Permanent Record': 3, 'Roundup Domestic': 3, 'Migrant Children': 3, 'Boris Johnson': 6, 'Service Backs': 5, 'Grand Bahama': 6, 'China Crackdown': 3, 'Francis Africa': 4, 'Portrait Series': 3, 'Problems People': 3, 'League Feelings': 3, 'Karaoke Hostess': 3, 'Ronstadt Sound': 4, 'Somali American': 3, 'School Backpack': 3, 'Engineers Earth': 3, 'Seats Congress': 3, 'India Attempt': 4, 'Massive Effort': 3, 'Colombia Major': 3, 'Handmaid Tale': 4, 'Center Chinese': 3, 'Graphic Memoir': 3, 'Weight Student': 3, 'Kiki Challenge': 3, 'Fuel Economy': 4, 'Block Nation': 4, 'Britain House': 3, 'Jobs Report': 5, 'Fentanyl Dark': 3, 'Silence Notes': 3, 'Kids Personal': 3, 'Friday News': 5, 'Optimists Win': 3, 'Trumpcare GOP': 3, 'Opioid Crisis': 3, 'Labs Streets': 3, 'Treads Water': 3, 'Moody Purple': 3, 'Land Rover': 4, 'Moon South': 4, 'Deal Brexit': 3, 'Drives Nuts': 3, 'Apple Tree': 4, 'Voice Safe': 4, 'Farmers Mud': 3, 'Lords Bill': 3, 'Ground Gun': 3, 'Big State': 4, 'Vitamin E': 4, 'Web Profit': 3, 'Humor Love': 3, 'World Cafe': 3, 'study': 6, 'climate': 4, 'campaign': 3, 'French': 3, 'Indian': 3, 'oil': 6, 'Russia': 3, 'Getty': 3, 'law': 3}
+THIRTY: 4
+DATA:
+[{'word': 'Trump Administration', 'value': 10, 'url': 'https://news.google.com/search?q=Trump Administration'}, {'word': 'California Automakers', 'value': 4, 'url': 'https://news.google.com/search?q=California Automakers'}, {'word': 'Contradicts Weather', 'value': 5, 'url': 'https://news.google.com/search?q=Contradicts Weather'}, {'word': 'Supervised Injection', 'value': 4, 'url': 'https://news.google.com/search?q=Supervised Injection'}, {'word': 'Addiction Treatment', 'value': 4, 'url': 'https://news.google.com/search?q=Addiction Treatment'}, {'word': 'Attorneys General', 'value': 6, 'url': 'https://news.google.com/search?q=Attorneys General'}, {'word': 'Hurricane Dorian', 'value': 6, 'url': 'https://news.google.com/search?q=Hurricane Dorian'}, {'word': 'Extinctions Humans', 'value': 4, 'url': 'https://news.google.com/search?q=Extinctions Humans'}, {'word': 'Scientists Access', 'value': 4, 'url': 'https://news.google.com/search?q=Scientists Access'}, {'word': 'Documentary Linda', 'value': 4, 'url': 'https://news.google.com/search?q=Documentary Linda'}, {'word': 'Margaret Atwood', 'value': 5, 'url': 'https://news.google.com/search?q=Margaret Atwood'}, {'word': 'Facebook Google', 'value': 5, 'url': 'https://news.google.com/search?q=Facebook Google'}, {'word': 'Health Databanks', 'value': 4, 'url': 'https://news.google.com/search?q=Health Databanks'}, {'word': 'Threat Alabama', 'value': 5, 'url': 'https://news.google.com/search?q=Threat Alabama'}, {'word': 'Options Limited', 'value': 4, 'url': 'https://news.google.com/search?q=Options Limited'}, {'word': 'Ella Fitzgerald', 'value': 4, 'url': 'https://news.google.com/search?q=Ella Fitzgerald'}, {'word': 'Boris Johnson', 'value': 6, 'url': 'https://news.google.com/search?q=Boris Johnson'}, {'word': 'Service Backs', 'value': 5, 'url': 'https://news.google.com/search?q=Service Backs'}, {'word': 'Grand Bahama', 'value': 6, 'url': 'https://news.google.com/search?q=Grand Bahama'}, {'word': 'Francis Africa', 'value': 4, 'url': 'https://news.google.com/search?q=Francis Africa'}, {'word': 'Ronstadt Sound', 'value': 4, 'url': 'https://news.google.com/search?q=Ronstadt Sound'}, {'word': 'India Attempt', 'value': 4, 'url': 'https://news.google.com/search?q=India Attempt'}, {'word': 'Handmaid Tale', 'value': 4, 'url': 'https://news.google.com/search?q=Handmaid Tale'}, {'word': 'Fuel Economy', 'value': 4, 'url': 'https://news.google.com/search?q=Fuel Economy'}, {'word': 'Block Nation', 'value': 4, 'url': 'https://news.google.com/search?q=Block Nation'}, {'word': 'Jobs Report', 'value': 5, 'url': 'https://news.google.com/search?q=Jobs Report'}, {'word': 'Friday News', 'value': 5, 'url': 'https://news.google.com/search?q=Friday News'}, {'word': 'Land Rover', 'value': 4, 'url': 'https://news.google.com/search?q=Land Rover'}, {'word': 'Moon South', 'value': 4, 'url': 'https://news.google.com/search?q=Moon South'}, {'word': 'Apple Tree', 'value': 4, 'url': 'https://news.google.com/search?q=Apple Tree'}, {'word': 'Voice Safe', 'value': 4, 'url': 'https://news.google.com/search?q=Voice Safe'}, {'word': 'Big State', 'value': 4, 'url': 'https://news.google.com/search?q=Big State'}, {'word': 'Vitamin E', 'value': 4, 'url': 'https://news.google.com/search?q=Vitamin E'}, {'word': 'study', 'value': 6, 'url': 'https://news.google.com/search?q=study'}, {'word': 'climate', 'value': 4, 'url': 'https://news.google.com/search?q=climate'}, {'word': 'oil', 'value': 6, 'url': 'https://news.google.com/search?q=oil'}]
+SHOULD BE AN EMPTY DATA: 
+[{'word': 'Trump Administration', 'value': 10, 'url': 'https://news.google.com/search?q=Trump Administration'}, {'word': 'California Automakers', 'value': 4, 'url': 'https://news.google.com/search?q=California Automakers'}, {'word': 'Contradicts Weather', 'value': 5, 'url': 'https://news.google.com/search?q=Contradicts Weather'}, {'word': 'Supervised Injection', 'value': 4, 'url': 'https://news.google.com/search?q=Supervised Injection'}, {'word': 'Addiction Treatment', 'value': 4, 'url': 'https://news.google.com/search?q=Addiction Treatment'}, {'word': 'Attorneys General', 'value': 6, 'url': 'https://news.google.com/search?q=Attorneys General'}, {'word': 'Hurricane Dorian', 'value': 6, 'url': 'https://news.google.com/search?q=Hurricane Dorian'}, {'word': 'Extinctions Humans', 'value': 4, 'url': 'https://news.google.com/search?q=Extinctions Humans'}, {'word': 'Scientists Access', 'value': 4, 'url': 'https://news.google.com/search?q=Scientists Access'}, {'word': 'Documentary Linda', 'value': 4, 'url': 'https://news.google.com/search?q=Documentary Linda'}, {'word': 'Margaret Atwood', 'value': 5, 'url': 'https://news.google.com/search?q=Margaret Atwood'}, {'word': 'Facebook Google', 'value': 5, 'url': 'https://news.google.com/search?q=Facebook Google'}, {'word': 'Health Databanks', 'value': 4, 'url': 'https://news.google.com/search?q=Health Databanks'}, {'word': 'Threat Alabama', 'value': 5, 'url': 'https://news.google.com/search?q=Threat Alabama'}, {'word': 'Options Limited', 'value': 4, 'url': 'https://news.google.com/search?q=Options Limited'}, {'word': 'Ella Fitzgerald', 'value': 4, 'url': 'https://news.google.com/search?q=Ella Fitzgerald'}, {'word': 'Boris Johnson', 'value': 6, 'url': 'https://news.google.com/search?q=Boris Johnson'}, {'word': 'Service Backs', 'value': 5, 'url': 'https://news.google.com/search?q=Service Backs'}, {'word': 'Grand Bahama', 'value': 6, 'url': 'https://news.google.com/search?q=Grand Bahama'}, {'word': 'Francis Africa', 'value': 4, 'url': 'https://news.google.com/search?q=Francis Africa'}, {'word': 'Ronstadt Sound', 'value': 4, 'url': 'https://news.google.com/search?q=Ronstadt Sound'}, {'word': 'India Attempt', 'value': 4, 'url': 'https://news.google.com/search?q=India Attempt'}, {'word': 'Handmaid Tale', 'value': 4, 'url': 'https://news.google.com/search?q=Handmaid Tale'}, {'word': 'Fuel Economy', 'value': 4, 'url': 'https://news.google.com/search?q=Fuel Economy'}, {'word': 'Block Nation', 'value': 4, 'url': 'https://news.google.com/search?q=Block Nation'}, {'word': 'Jobs Report', 'value': 5, 'url': 'https://news.google.com/search?q=Jobs Report'}, {'word': 'Friday News', 'value': 5, 'url': 'https://news.google.com/search?q=Friday News'}, {'word': 'Land Rover', 'value': 4, 'url': 'https://news.google.com/search?q=Land Rover'}, {'word': 'Moon South', 'value': 4, 'url': 'https://news.google.com/search?q=Moon South'}, {'word': 'Apple Tree', 'value': 4, 'url': 'https://news.google.com/search?q=Apple Tree'}, {'word': 'Voice Safe', 'value': 4, 'url': 'https://news.google.com/search?q=Voice Safe'}, {'word': 'Big State', 'value': 4, 'url': 'https://news.google.com/search?q=Big State'}, {'word': 'Vitamin E', 'value': 4, 'url': 'https://news.google.com/search?q=Vitamin E'}, {'word': 'study', 'value': 6, 'url': 'https://news.google.com/search?q=study'}, {'word': 'climate', 'value': 4, 'url': 'https://news.google.com/search?q=climate'}, {'word': 'oil', 'value': 6, 'url': 'https://news.google.com/search?q=oil'}]
+DATACANDIDATES: 
+{'Trump Administration': 10, 'Unauthorized Immigrants': 3, 'California Automakers': 4, 'Contradicts Weather': 5, 'Supervised Injection': 4, 'Adolescence Adulthood': 3, 'Addiction Treatment': 4, 'Attorneys General': 6, 'Writers Disabilities': 3, 'Hurricane Dorian': 6, 'Photographer Common': 3, 'Extinctions Humans': 4, 'Marijuana Producer': 3, 'Scientists Access': 4, 'Touchingly Parents': 3, 'Documentary Linda': 4, 'Choice Competition': 3, 'Margaret Atwood': 5, 'Facebook Google': 5, 'Health Databanks': 4, 'Confusing Moments': 3, 'Rushdie Quichotte': 3, 'Essay Collections': 3, 'Chapter Everybody': 3, 'Families Students': 3, 'Threat Alabama': 5, 'Rights Advocates': 3, 'Options Limited': 4, 'Ella Fitzgerald': 4, 'Economic Jitters': 3, 'Permanent Record': 3, 'Roundup Domestic': 3, 'Migrant Children': 3, 'Boris Johnson': 6, 'Service Backs': 5, 'Grand Bahama': 6, 'China Crackdown': 3, 'Francis Africa': 4, 'Portrait Series': 3, 'Problems People': 3, 'League Feelings': 3, 'Karaoke Hostess': 3, 'Ronstadt Sound': 4, 'Somali American': 3, 'School Backpack': 3, 'Engineers Earth': 3, 'Seats Congress': 3, 'India Attempt': 4, 'Massive Effort': 3, 'Colombia Major': 3, 'Handmaid Tale': 4, 'Center Chinese': 3, 'Graphic Memoir': 3, 'Weight Student': 3, 'Kiki Challenge': 3, 'Fuel Economy': 4, 'Block Nation': 4, 'Britain House': 3, 'Jobs Report': 5, 'Fentanyl Dark': 3, 'Silence Notes': 3, 'Kids Personal': 3, 'Friday News': 5, 'Optimists Win': 3, 'Trumpcare GOP': 3, 'Opioid Crisis': 3, 'Labs Streets': 3, 'Treads Water': 3, 'Moody Purple': 3, 'Land Rover': 4, 'Moon South': 4, 'Deal Brexit': 3, 'Drives Nuts': 3, 'Apple Tree': 4, 'Voice Safe': 4, 'Farmers Mud': 3, 'Lords Bill': 3, 'Ground Gun': 3, 'Big State': 4, 'Vitamin E': 4, 'Web Profit': 3, 'Humor Love': 3, 'World Cafe': 3, 'study': 6, 'climate': 4, 'campaign': 3, 'French': 3, 'Indian': 3, 'oil': 6, 'Russia': 3, 'Getty': 3, 'law': 3, 'government': 6, 'President': 6, 'Hong Kong': 6, 'progress': 6, 'increase': 6, 'Mexico': 6, 'rebel': 6, 'panda': 6, 'water': 6, 'life': 6, 'Meng': 6, 'win': 6}
+THIRTY: 4
+DATA:
+[{'word': 'Trump Administration', 'value': 10, 'url': 'https://news.google.com/search?q=Trump Administration'}, {'word': 'California Automakers', 'value': 4, 'url': 'https://news.google.com/search?q=California Automakers'}, {'word': 'Contradicts Weather', 'value': 5, 'url': 'https://news.google.com/search?q=Contradicts Weather'}, {'word': 'Supervised Injection', 'value': 4, 'url': 'https://news.google.com/search?q=Supervised Injection'}, {'word': 'Addiction Treatment', 'value': 4, 'url': 'https://news.google.com/search?q=Addiction Treatment'}, {'word': 'Attorneys General', 'value': 6, 'url': 'https://news.google.com/search?q=Attorneys General'}, {'word': 'Hurricane Dorian', 'value': 6, 'url': 'https://news.google.com/search?q=Hurricane Dorian'}, {'word': 'Extinctions Humans', 'value': 4, 'url': 'https://news.google.com/search?q=Extinctions Humans'}, {'word': 'Scientists Access', 'value': 4, 'url': 'https://news.google.com/search?q=Scientists Access'}, {'word': 'Documentary Linda', 'value': 4, 'url': 'https://news.google.com/search?q=Documentary Linda'}, {'word': 'Margaret Atwood', 'value': 5, 'url': 'https://news.google.com/search?q=Margaret Atwood'}, {'word': 'Facebook Google', 'value': 5, 'url': 'https://news.google.com/search?q=Facebook Google'}, {'word': 'Health Databanks', 'value': 4, 'url': 'https://news.google.com/search?q=Health Databanks'}, {'word': 'Threat Alabama', 'value': 5, 'url': 'https://news.google.com/search?q=Threat Alabama'}, {'word': 'Options Limited', 'value': 4, 'url': 'https://news.google.com/search?q=Options Limited'}, {'word': 'Ella Fitzgerald', 'value': 4, 'url': 'https://news.google.com/search?q=Ella Fitzgerald'}, {'word': 'Boris Johnson', 'value': 6, 'url': 'https://news.google.com/search?q=Boris Johnson'}, {'word': 'Service Backs', 'value': 5, 'url': 'https://news.google.com/search?q=Service Backs'}, {'word': 'Grand Bahama', 'value': 6, 'url': 'https://news.google.com/search?q=Grand Bahama'}, {'word': 'Francis Africa', 'value': 4, 'url': 'https://news.google.com/search?q=Francis Africa'}, {'word': 'Ronstadt Sound', 'value': 4, 'url': 'https://news.google.com/search?q=Ronstadt Sound'}, {'word': 'India Attempt', 'value': 4, 'url': 'https://news.google.com/search?q=India Attempt'}, {'word': 'Handmaid Tale', 'value': 4, 'url': 'https://news.google.com/search?q=Handmaid Tale'}, {'word': 'Fuel Economy', 'value': 4, 'url': 'https://news.google.com/search?q=Fuel Economy'}, {'word': 'Block Nation', 'value': 4, 'url': 'https://news.google.com/search?q=Block Nation'}, {'word': 'Jobs Report', 'value': 5, 'url': 'https://news.google.com/search?q=Jobs Report'}, {'word': 'Friday News', 'value': 5, 'url': 'https://news.google.com/search?q=Friday News'}, {'word': 'Land Rover', 'value': 4, 'url': 'https://news.google.com/search?q=Land Rover'}, {'word': 'Moon South', 'value': 4, 'url': 'https://news.google.com/search?q=Moon South'}, {'word': 'Apple Tree', 'value': 4, 'url': 'https://news.google.com/search?q=Apple Tree'}, {'word': 'Voice Safe', 'value': 4, 'url': 'https://news.google.com/search?q=Voice Safe'}, {'word': 'Big State', 'value': 4, 'url': 'https://news.google.com/search?q=Big State'}, {'word': 'Vitamin E', 'value': 4, 'url': 'https://news.google.com/search?q=Vitamin E'}, {'word': 'study', 'value': 6, 'url': 'https://news.google.com/search?q=study'}, {'word': 'climate', 'value': 4, 'url': 'https://news.google.com/search?q=climate'}, {'word': 'oil', 'value': 6, 'url': 'https://news.google.com/search?q=oil'}, {'word': 'Trump Administration', 'value': 10, 'url': 'https://news.google.com/search?q=Trump Administration'}, {'word': 'California Automakers', 'value': 4, 'url': 'https://news.google.com/search?q=California Automakers'}, {'word': 'Contradicts Weather', 'value': 5, 'url': 'https://news.google.com/search?q=Contradicts Weather'}, {'word': 'Supervised Injection', 'value': 4, 'url': 'https://news.google.com/search?q=Supervised Injection'}, {'word': 'Addiction Treatment', 'value': 4, 'url': 'https://news.google.com/search?q=Addiction Treatment'}, {'word': 'Attorneys General', 'value': 6, 'url': 'https://news.google.com/search?q=Attorneys General'}, {'word': 'Hurricane Dorian', 'value': 6, 'url': 'https://news.google.com/search?q=Hurricane Dorian'}, {'word': 'Extinctions Humans', 'value': 4, 'url': 'https://news.google.com/search?q=Extinctions Humans'}, {'word': 'Scientists Access', 'value': 4, 'url': 'https://news.google.com/search?q=Scientists Access'}, {'word': 'Documentary Linda', 'value': 4, 'url': 'https://news.google.com/search?q=Documentary Linda'}, {'word': 'Margaret Atwood', 'value': 5, 'url': 'https://news.google.com/search?q=Margaret Atwood'}, {'word': 'Facebook Google', 'value': 5, 'url': 'https://news.google.com/search?q=Facebook Google'}, {'word': 'Health Databanks', 'value': 4, 'url': 'https://news.google.com/search?q=Health Databanks'}, {'word': 'Threat Alabama', 'value': 5, 'url': 'https://news.google.com/search?q=Threat Alabama'}, {'word': 'Options Limited', 'value': 4, 'url': 'https://news.google.com/search?q=Options Limited'}, {'word': 'Ella Fitzgerald', 'value': 4, 'url': 'https://news.google.com/search?q=Ella Fitzgerald'}, {'word': 'Boris Johnson', 'value': 6, 'url': 'https://news.google.com/search?q=Boris Johnson'}, {'word': 'Service Backs', 'value': 5, 'url': 'https://news.google.com/search?q=Service Backs'}, {'word': 'Grand Bahama', 'value': 6, 'url': 'https://news.google.com/search?q=Grand Bahama'}, {'word': 'Francis Africa', 'value': 4, 'url': 'https://news.google.com/search?q=Francis Africa'}, {'word': 'Ronstadt Sound', 'value': 4, 'url': 'https://news.google.com/search?q=Ronstadt Sound'}, {'word': 'India Attempt', 'value': 4, 'url': 'https://news.google.com/search?q=India Attempt'}, {'word': 'Handmaid Tale', 'value': 4, 'url': 'https://news.google.com/search?q=Handmaid Tale'}, {'word': 'Fuel Economy', 'value': 4, 'url': 'https://news.google.com/search?q=Fuel Economy'}, {'word': 'Block Nation', 'value': 4, 'url': 'https://news.google.com/search?q=Block Nation'}, {'word': 'Jobs Report', 'value': 5, 'url': 'https://news.google.com/search?q=Jobs Report'}, {'word': 'Friday News', 'value': 5, 'url': 'https://news.google.com/search?q=Friday News'}, {'word': 'Land Rover', 'value': 4, 'url': 'https://news.google.com/search?q=Land Rover'}, {'word': 'Moon South', 'value': 4, 'url': 'https://news.google.com/search?q=Moon South'}, {'word': 'Apple Tree', 'value': 4, 'url': 'https://news.google.com/search?q=Apple Tree'}, {'word': 'Voice Safe', 'value': 4, 'url': 'https://news.google.com/search?q=Voice Safe'}, {'word': 'Big State', 'value': 4, 'url': 'https://news.google.com/search?q=Big State'}, {'word': 'Vitamin E', 'value': 4, 'url': 'https://news.google.com/search?q=Vitamin E'}, {'word': 'study', 'value': 6, 'url': 'https://news.google.com/search?q=study'}, {'word': 'climate', 'value': 4, 'url': 'https://news.google.com/search?q=climate'}, {'word': 'oil', 'value': 6, 'url': 'https://news.google.com/search?q=oil'}, {'word': 'government', 'value': 6, 'url': 'https://news.google.com/search?q=government'}, {'word': 'President', 'value': 6, 'url': 'https://news.google.com/search?q=President'}, {'word': 'Hong Kong', 'value': 6, 'url': 'https://news.google.com/search?q=Hong Kong'}, {'word': 'progress', 'value': 6, 'url': 'https://news.google.com/search?q=progress'}, {'word': 'increase', 'value': 6, 'url': 'https://news.google.com/search?q=increase'}, {'word': 'Mexico', 'value': 6, 'url': 'https://news.google.com/search?q=Mexico'}, {'word': 'rebel', 'value': 6, 'url': 'https://news.google.com/search?q=rebel'}, {'word': 'panda', 'value': 6, 'url': 'https://news.google.com/search?q=panda'}, {'word': 'water', 'value': 6, 'url': 'https://news.google.com/search?q=water'}, {'word': 'life', 'value': 6, 'url': 'https://news.google.com/search?q=life'}, {'word': 'Meng', 'value': 6, 'url': 'https://news.google.com/search?q=Meng'}, {'word': 'win', 'value': 6, 'url': 'https://news.google.com/search?q=win'}]
