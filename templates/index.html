@@ -92,7 +92,7 @@
   function normalize(wordList) {
     var max = Number.MIN_SAFE_INTEGER;
     var optimalMax = 50;
-    var threshold = 7;
+    var threshold = 10;
 
     for (var i = 0; i < words.length; i++) {
       if (wordList[i].value > max) {
@@ -101,7 +101,12 @@
     }
 
     for (var i = 0; i < words.length; i++) {
-      wordList[i].value = parseInt(wordList[i].value * (optimalMax / max))
+      if (max != 0){
+        wordList[i].value = parseInt(wordList[i].value * (optimalMax / max));
+      }
+      if (wordList[i].value < threshold) {
+        wordList[i].value = threshold;
+      }
     }
     return wordList
   }
