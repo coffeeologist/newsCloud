@@ -75,7 +75,7 @@
     }
     m = checkTime(m);
     document.getElementById('clock').innerHTML =
-    "It is " + "\n" + h % 12 + ":" + m + " on " + weekday + " " + month + "/" + day;
+    "It is " + "\n" + h % 12 + ":" + m + " on " + weekday + " " + (month+1) + "/" + (day+1);
     var t = setTimeout(startTime, 500);
   }
   function checkTime(i) {
