@@ -97,7 +97,7 @@
 
   var startPoint = {
     x: window.innerWidth/2,
-    y: window.innerHeight /2  - 50
+    y: window.innerHeight /4
   };
 
   var wordsDown = [];
@@ -127,7 +127,7 @@
 
   function spiral(i, callback) {
     angle = i;
-    x = parseInt((1 + angle) * 2*Math.cos(angle));
+    x = parseInt((1 + angle) * 2.5*Math.cos(angle));
     y = parseInt((1 + angle) * Math.sin(angle));
     return callback ? callback() : null;
   }
