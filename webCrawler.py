@@ -4,6 +4,7 @@ import operator
 
 freq = dict()
 
+# most common english words: https://www.rypeapp.com/most-common-english-words/
 
 def addToFreq(txt):
     for word in txt.split():
