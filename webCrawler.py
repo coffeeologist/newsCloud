@@ -2,23 +2,30 @@ from bs4 import BeautifulSoup as soup
 import requests
 import operator
 import spacy
+import praw
 
-FREQ_THRESHOLD = 15
-NUM_ARTICLES = 30
+freq_threshold = 0
+NUM_ARTICLES_NEWS = 48
+NUM_ARTICLES_REDDIT = 48
+
+common_words = ['the', 'be', 'of', 'and', 'a', 'to', 'in', 'he', 'have', 'it', 'that', 'for', 'they', 'I', 'with', 'as', 'not', 'on', 'she', 'at', 'by', 'this', 'we', 'you', 'do', 'but', 'from', 'or', 'which', 'one', 'would', 'all', 'will', 'there', 'say', 'says' 'said', 'who', 'make', 'when', 'can', 'more', 'if', 'no', 'man', 'out', 'other', 'what', 'time', 'up', 'go', 'about', 'than', 'into', 'could', 'state', 'only', 'new', 'year', 'some', 'take', 'come', 'these', 'know', 'see', 'use', 'get', 'like', 'then', 'first', 'any', 'work', 'now', 'many', 'such', 'give', 'over', 'think', 'most', 'even', 'find', 'day', 'also', 'after', 'way', 'many', 'must', 'look', 'before', 'great', 'back', 'through', 'long', 'where', 'much', 'should', 'well', 'people', 'down', 'own', 'just', 'U.S.', 'new']
 
 freq = dict()
 data = []
 
 nlp = spacy.load('en_core_web_sm')
 
-def addToFreq(word):
+reddit = praw.Reddit(client_id='CJRbQeTdLuw50Q', client_secret='JyjuTwMj263CZKwa1D-vDQ9f5IM', user_agent='test app')
+
+def addToFreq(word, numTime):
     if word in freq:
-        freq[word] += 1
+        freq[word] += numTime
     else:
-        freq[word] = 1
+        freq[word] = numTime
 
 def runThroughArticles():
-    for i in range(1001, 1001 + NUM_ARTICLES):
+    # news articles
+    for i in range(1001, 1001 + NUM_ARTICLES_NEWS):
         url = "https://text.npr.org/t.php?tid=" + str(i)
         response = requests.get(url, timeout=10)
         content = soup(response.content, "html.parser")
@@ -29,20 +36,41 @@ def runThroughArticles():
                 doc = nlp(s)
                 prev = None
                 for w in doc:
-                    if(w.is_stop == False and 
-                       (w.pos_ == "PROPN" or w.pos_ == "VERB" or w.pos_ == "NOUN" or w.pos_ == "ADJ")):
-                        addToFreq(w.text)
-                        if (prev != None):
-                            addToFreq(prev + " " + w.text)
-                            addToFreq(prev + " " + w.text) # intentially do it twice
+                    inCommons = w.lemma_ in common_words
+                    # print(inCommons)
+                    if((w.is_stop == False) and 
+                       (w.pos_ == "PROPN" or w.pos_ == "NOUN" or w.pos_ == "ADJ") and (not inCommons) ):
+                        # print(addToFreq(w.text))
+                        if (prev != None and prev != w.text):
+                            addToFreq(prev + " " + w.text, 2) # intentially do it twice
                         prev = w.text
 
-def findThreshold():
-    sum = 0
-    for n in freq.values():
-        sum += n
+    # reddit posts
     
-    FREQ_THRESHOLD = sum / 175
+    freq_avg = 0
+    for n in freq.values():
+        freq_avg += n
+    freq_avg /= len(freq)
+
+    # print("****" + str(freq_avg))
+
+
+    top_posts = reddit.subreddit('news').top("day", limit=NUM_ARTICLES_REDDIT)
+    for post in top_posts:
+        doc = nlp(post.title)
+        prev = None
+        for w in doc: 
+            inCommons = w.lemma_ in common_words
+
+            if((w.is_stop == False) and 
+               (w.pos_ == "PROPN" or w.pos_ == "NOUN" or w.pos_ == "ADJ") and not inCommons):
+                    freqScore = int(min(max(1, int(post.score / 100)), freq_avg))
+                    addToFreq(w.text, freqScore)
+                    if (prev != None and prev != w.text):
+                        # print(prev + " " + w.text + " | score: " + str(freqScore * 2))
+                        addToFreq(prev + " " + w.text, 1.5*freqScore) # THREE TIMES!
+                    prev = w.text
+                    
 
 def isARepeat(w) -> bool:
     for d in data:
@@ -55,37 +83,51 @@ def isARepeat(w) -> bool:
         
     return False
 
+def func(x):
+    return len(x)*2 + freq.get(x)
+
 def scrapeArticles():
     runThroughArticles()
-    findThreshold()
-    for key in sorted(freq.keys(), key = len, reverse=True):
-        if (freq[key] > FREQ_THRESHOLD and
+
+    # find threshold
+    sum = 0
+    maxVal = 0
+    for n in freq.values():
+        if (n > maxVal):
+            maxVal = n
+        sum += n
+    
+    # print("SUM: " + str(sum))
+    freq_threshold = min(maxVal/2, sum / len(freq)*2)
+
+    # print("THRESH: " + str(freq_threshold))
+    # find threshold - end
+    dataCandidate = dict()
+    for key in sorted(freq.keys(), key = func, reverse=True):
+        # print("word: " + key + " value: " + str(freq[key]))
+
+        if (freq[key] > freq_threshold and
             isARepeat(key) == False):
+            dataCandidate[key] = freq[key]
+    
+    counter = 0
+    thirtyth = 0
+    for values in sorted(freq.values(), reverse=True):
+        if (counter == 30):
+            thirtyth = values
+        counter += 1
+    
+    print(dataCandidate)
+    print(thirtyth)
+    
+    for key in dataCandidate.keys():
+        if (freq[key] >= thirtyth):
             data.append({"word": key,
-                         "value": freq[key],
-                         "url": "https://www.google.com/search?q=" + key})
+                        "value": freq[key],
+                        "url": "https://news.google.com/search?q=" + key})
+    # print(freq)
+    # print(data)
+
     return data
 
 scrapeArticles()
-'''
-for key in freq.keys():
-    if (freq[key] > 2):
-        print("\"" + str(key) + "\" : " + str(freq[key]))
-'''
-
-
-# Narrowing down the space to the article in the page
-#(since there are many other irrelevant elements in the page)
-
-#headlines = soup.find(class_="ul")
-
-
-'''
-# Getting the keywords section 
-keyword_section = soup.find(class_="keywords-section")
-# Same as: soup.select("div.article-wrapper grid row div.keywords-section")
-
-# Getting a list of all keywords which are inserted into a keywords list in line 7.
-keywords_raw = keyword_section.find_all(class_="keyword")
-keyword_list = [word.get_text() for word in keywords_raw]
-'''
