@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+<p id="wordCloud"></p>
+
+<script type="text/javascript">
+  function normalize(wordList) {
+    var max = Number.MIN_SAFE_INTEGER
+    var min = Number.MAX_SAFE_INTEGER
+    for (var i = 0; i < wordList.length; i++) {
+      if (wordList[i].value > max) {
+        max = wordList[i].value
+      }
+      if (wordList[i].value < min) {
+        min = wordList[i].value
+      }
+    }
+  }
+
+  function takeData(vars) {
+    return vars
+  }
+  
+  var groupText = document.createElement("div");
+  for (var i = 0; i < words.length; i++) {
+    var nodePara = document.createElement("p")
+    var nodeText = document.createTextNode(words[i].word + words[i].value)
+    nodePara.appendChild(nodeText)
+    var strSize = words[i].value.toString() + 'px'
+    nodePara.style.fontSize = strSize
+    groupText.appendChild(nodePara);
+  }
+
+  document.getElementById("wordCloud").appendChild(groupText)
+
+</script>
+
+</body>
+</html>
