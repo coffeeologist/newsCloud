@@ -7,6 +7,10 @@
 <p id="wordCloud"></p>
 
 <script type="text/javascript">
+  var words = {{ data|tojson }}
+</script>
+
+<script type="text/javascript">
   function normalize(wordList) {
     var max = Number.MIN_SAFE_INTEGER
     var min = Number.MAX_SAFE_INTEGER
@@ -18,10 +22,6 @@
         min = wordList[i].value
       }
     }
-  }
-
-  function takeData(vars) {
-    return vars
   }
   
   var groupText = document.createElement("div");
@@ -35,7 +35,6 @@
   }
 
   document.getElementById("wordCloud").appendChild(groupText)
-
 </script>
 
 </body>

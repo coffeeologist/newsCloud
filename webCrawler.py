@@ -24,6 +24,10 @@ def scrapeArticles():
             if(s != "Contact Us" and s != "Terms of Use" and s!= "Permissions" and s!= "Privacy Policy"):
                 addToFreq(headline.text)
     
+    return [{"word": "Potatoes", "value": 25, "url":"https://en.wikipedia.org/wiki/Potato"},
+            {"word": "Tomatoes", "value": 50, "url":"https://en.wikipedia.org/wiki/Tomato"},
+            {"word": "Cats", "value": 10, "url":"https://en.wikipedia.org/wiki/Cat"}]
+    
 scrapeArticles()
 
 for key in freq.keys():
