@@ -14,7 +14,7 @@ def addToFreq(txt):
             freq[word] = 1
 
 def scrapeArticles():
-    for i in range(1001, 1049):
+    for i in range(1001, 1002):
         url = "https://text.npr.org/t.php?tid=" + str(i)
         response = requests.get(url, timeout=10)
         content = soup(response.content, "html.parser")
