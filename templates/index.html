@@ -12,13 +12,20 @@
 
 <div class="clockTime" id= "clock"></div>
 
-<div id="wordCloud"></div>
+<div id="wordCloud" onload = ""></div>
 
 <style>
-  .clockTime {
-    color: #ff85a2;
-    font-family: 'Gayathri', sans-serif;
-    font-size: 35px
+  div.clockTime {
+    color: white;
+    font-family: 'Manjari', sans-serif;
+    font-size: 45px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -500px;
+    width: 1000px;
+    text-align: center;
+    
   }
   body {
     background-image: url('static/img/towerFit.jpg');
@@ -27,9 +34,12 @@
     background-size: cover;
   }
   a:link {
+    opacity:0;
+    transition: opacity 3s;
     background-color: transparent;
     text-decoration: none;
-    font-family: 'Gayathri', sans-serif;
+    font-family: 'Manjari', sans-serif;
+
   }
   </style>
 
@@ -189,13 +199,10 @@ function colorLinks()
     var links = document.getElementsByTagName("a");
     for(var i=0;i<links.length;i++)
     {
-        if(links[i].href)
-        {
-            links[i].style.color = colors[i % colors.length];  
-        }
+      links[i].style.color = colors[i % colors.length];
+      links[i].style.opacity = 1;
     }
 }
-
 
   
   // var groupText = document.createElement("div");
