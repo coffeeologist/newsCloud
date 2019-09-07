@@ -4,14 +4,14 @@
 </head>
 <body>
 
-<p id="wordCloud"></p>
+<div id="wordCloud"></div>
 
 <style>
   a:link {
     color: pink;
     background-color: transparent;
     text-decoration: none;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: Tahoma, Geneva, sans-serif;
   }
   
   a:visited {
@@ -40,8 +40,8 @@
 <script type="text/javascript">
   function normalize(wordList) {
     var max = Number.MIN_SAFE_INTEGER;
-    var optimalMax = 80;
-    var threshold = 15;
+    var optimalMax = 60;
+    var threshold = 10;
 
     for (var i = 0; i < words.length; i++) {
       if (wordList[i].value > max) {
@@ -56,23 +56,96 @@
   }
   
   words = normalize(words);
-  
-  var groupText = document.createElement("div");
-  for (var i = 0; i < words.length; i++) {
-    var nodePara = document.createElement("p");
+  words.sort(function(a,b) {
+    return -1 * (a.value - b.value)
+  });
+
+  var cloud = document.getElementById("wordCloud");
+  cloud.style.position = "relative";
+
+  var startPoint = {
+    x: cloud.offsetWidth / 2,
+    y: cloud.offsetHeight / 2 + 400
+  };
+
+  var wordsDown = [];
+
+  function createWordObject(wordCurr) {
+    var nodeContainer = document.createElement("div");
     var nodeLink = document.createElement("a");
-    var nodeText = document.createTextNode(words[i].word + words[i].value);
-    nodePara.appendChild(nodeLink)
+    var nodeText = document.createTextNode(wordCurr.word);
+    nodeContainer.appendChild(nodeLink);
+    nodeContainer.style.position = "absolute";
     nodeLink.appendChild(nodeText);
-    nodeLink.title = words[i].word;
-    nodeLink.href = words[i].url;
+    nodeLink.title = wordCurr.word;
+    nodeLink.href = wordCurr.url;
     nodeLink.target ="_blank";
-    var strSize = words[i].value.toString() + 'px';
+    var strSize = wordCurr.value.toString() + 'px';
     nodeLink.style.fontSize = strSize;
-    groupText.appendChild(nodePara);
+    
+    return nodeContainer;
   }
 
-  document.getElementById("wordCloud").appendChild(groupText);
+  function placeWord(word, x, y) {
+    cloud.appendChild(word);
+    word.style.left = x - word.offsetWidth/2 + "px";
+    word.style.top = y - word.offsetHeight/2 + "px";
+    wordsDown.push(word.getBoundingClientRect());
+  }
+
+  function spiral(i, callback) {
+    angle = i;
+    x = parseInt((1 + angle) * 2*Math.cos(angle));
+    y = parseInt((1 + angle) * Math.sin(angle));
+    return callback ? callback() : null;
+  }
+
+  function intersect(word, x, y) {
+    cloud.appendChild(word);    
+    
+    word.style.left = x - word.offsetWidth/2 + "px";
+    word.style.top = y - word.offsetHeight/2 + "px";
+    
+    var currentWord = word.getBoundingClientRect();
+    
+    cloud.removeChild(word);
+    
+    for(var i = 0; i < wordsDown.length; i+=1){
+        var comparisonWord = wordsDown[i];
+        
+        if(!(currentWord.right < comparisonWord.left ||
+             currentWord.left > comparisonWord.right ||
+             currentWord.bottom < comparisonWord.top ||
+             currentWord.top > comparisonWord.bottom)){
+            
+            return true;
+        }
+    }
+    return false;
+  }
+
+  (function placeWords() {
+      for (var i = 0; i < words.length; i++) {
+          var word = createWordObject(words[i]);
+          for (var j = 0; j < 360*3; j++) {
+              if (spiral(j, function() {
+                      if (!intersect(word, startPoint.x + x, startPoint.y + y)) {
+                          placeWord(word, startPoint.x + x, startPoint.y + y);
+                          return true;
+                      }
+                  })) {
+                  break;
+              }
+          }
+      }
+  })();
+  
+  // var groupText = document.createElement("div");
+/*   for (var i = 0; i < words.length; i++) {
+    placeWord(createWordObject(words[i]), 100,100);
+  } */
+
+  // document.getElementById("wordCloud").appendChild(groupText);
 </script>
 
 </body>
