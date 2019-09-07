@@ -17,6 +17,30 @@
   body {
     background-color: #EDEDED;
   }
+  a:link {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+    font-family: Tahoma, Geneva, sans-serif;
+  }
+  
+  a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:active {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+  }
   </style>
 
 <script type="text/javascript">
@@ -140,10 +164,10 @@
     for(var i = 0; i < wordsDown.length; i+=1){
         var comparisonWord = wordsDown[i];
         
-        if(!(currentWord.right < comparisonWord.left||
-             currentWord.left > comparisonWord.right ||
+        if(!(currentWord.right + 3 < comparisonWord.left - 3||
+             currentWord.left - 3> comparisonWord.right + 3 ||
              currentWord.bottom < comparisonWord.top ||
-             currentWord.top > comparisonWord.bottom)){
+             currentWord.top > comparisonWord.bottom )){
             
             return true;
         }
