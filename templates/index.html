@@ -2,36 +2,63 @@
 <html lang="en">
 <head>
 </head>
-<body>
+<body onload="startTime()">
+
+<div class="clockTime" id= "clock"></div>
 
 <div id="wordCloud"></div>
 
 <style>
-  a:link {
-    color: pink;
-    background-color: transparent;
-    text-decoration: none;
+  .clockTime {
+    color: #ff85a2;
     font-family: Tahoma, Geneva, sans-serif;
+    font-size: 35px
   }
-  
-  a:visited {
-    color: pink;
-    background-color: transparent;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: red;
-    background-color: transparent;
-    text-decoration: none;
-  }
-  
-  a:active {
-    color: red;
-    background-color: transparent;
-    text-decoration: none;
+  body {
+    background-color: #EDEDED;
   }
   </style>
+
+<script type="text/javascript">
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var month = today.getMonth();
+    var day = today.getDay();
+    var weekday = ""
+    switch (today.getDay()) {
+      case 0:
+        weekday = "Sunday";
+        break;
+      case 1:
+        weekday = "Monday";
+        break;
+      case 2:
+        weekday = "Tuesday";
+        break;
+      case 3:
+        weekday = "Wednesday";
+        break;
+      case 4:
+        weekday = "Thursday";
+        break;
+      case 5:
+        weekday = "Friday";
+        break;
+      case 6:
+        weekday = "Saturday";
+    }
+    m = checkTime(m);
+    document.getElementById('clock').innerHTML =
+    "It is " + "\n" + h % 12 + ":" + m + " on " + weekday + " " + month + "/" + day;
+    var t = setTimeout(startTime, 500);
+  }
+  function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+  }
+</script>
 
 <script type="text/javascript">
   var words = {{ data|tojson }}
@@ -40,7 +67,7 @@
 <script type="text/javascript">
   function normalize(wordList) {
     var max = Number.MIN_SAFE_INTEGER;
-    var optimalMax = 60;
+    var optimalMax = 50;
     var threshold = 10;
 
     for (var i = 0; i < words.length; i++) {
@@ -113,7 +140,7 @@
     for(var i = 0; i < wordsDown.length; i+=1){
         var comparisonWord = wordsDown[i];
         
-        if(!(currentWord.right < comparisonWord.left ||
+        if(!(currentWord.right < comparisonWord.left||
              currentWord.left > comparisonWord.right ||
              currentWord.bottom < comparisonWord.top ||
              currentWord.top > comparisonWord.bottom)){
@@ -127,7 +154,7 @@
   (function placeWords() {
       for (var i = 0; i < words.length; i++) {
           var word = createWordObject(words[i]);
-          for (var j = 0; j < 360*3; j++) {
+          for (var j = 0; j < 360*4; j++) {
               if (spiral(j, function() {
                       if (!intersect(word, startPoint.x + x, startPoint.y + y)) {
                           placeWord(word, startPoint.x + x, startPoint.y + y);
@@ -139,6 +166,21 @@
           }
       }
   })();
+
+colorLinks();
+
+function colorLinks(hex)
+{
+    colors = ["#ff85a2", "#39ffd0", "#ffa585", "#85ffa5", "#a585ff", "#ffe285"];
+    var links = document.getElementsByTagName("a");
+    for(var i=0;i<links.length;i++)
+    {
+        if(links[i].href)
+        {
+            links[i].style.color = colors[i % colors.length];  
+        }
+    }  
+}
   
   // var groupText = document.createElement("div");
 /*   for (var i = 0; i < words.length; i++) {
