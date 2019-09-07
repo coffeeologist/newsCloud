@@ -6,35 +6,73 @@
 
 <p id="wordCloud"></p>
 
+<style>
+  a:link {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+  
+  a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:active {
+    color: red;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  </style>
+
 <script type="text/javascript">
   var words = {{ data|tojson }}
 </script>
 
 <script type="text/javascript">
   function normalize(wordList) {
-    var max = Number.MIN_SAFE_INTEGER
-    var min = Number.MAX_SAFE_INTEGER
-    for (var i = 0; i < wordList.length; i++) {
+    var max = Number.MIN_SAFE_INTEGER;
+    var optimalMax = 150;
+    var threshold = 15;
+
+    for (var i = 0; i < words.length; i++) {
       if (wordList[i].value > max) {
-        max = wordList[i].value
-      }
-      if (wordList[i].value < min) {
-        min = wordList[i].value
+        max = wordList[i].value;
       }
     }
+
+    for (var i = 0; i < words.length; i++) {
+      wordList[i].value = parseInt(wordList[i].value * (optimalMax / max))
+    }
+    return wordList
   }
+  
+  words = normalize(words);
   
   var groupText = document.createElement("div");
   for (var i = 0; i < words.length; i++) {
-    var nodePara = document.createElement("p")
-    var nodeText = document.createTextNode(words[i].word + words[i].value)
-    nodePara.appendChild(nodeText)
-    var strSize = words[i].value.toString() + 'px'
-    nodePara.style.fontSize = strSize
+    var nodePara = document.createElement("p");
+    var nodeLink = document.createElement("a");
+    var nodeText = document.createTextNode(words[i].word + words[i].value);
+    nodePara.appendChild(nodeLink)
+    nodeLink.appendChild(nodeText);
+    nodeLink.title = words[i].word;
+    nodeLink.href = words[i].url;
+    nodeLink.target ="_blank";
+    var strSize = words[i].value.toString() + 'px';
+    nodeLink.style.fontSize = strSize;
     groupText.appendChild(nodePara);
   }
 
-  document.getElementById("wordCloud").appendChild(groupText)
+  document.getElementById("wordCloud").appendChild(groupText);
 </script>
 
 </body>
