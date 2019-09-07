@@ -7,7 +7,7 @@ import praw
 NUM_ARTICLES_NEWS = 48
 NUM_ARTICLES_REDDIT = 48
 
-common_words = ['the', 'be', 'of', 'and', 'a', 'to', 'in', 'he', 'have', 'it', 'that', 'for', 'they', 'I', 'with', 'as', 'not', 'on', 'she', 'at', 'by', 'this', 'we', 'you', 'do', 'but', 'from', 'or', 'which', 'one', 'would', 'all', 'will', 'there', 'say', 'says' 'said', 'who', 'make', 'when', 'can', 'more', 'if', 'no', 'man', 'out', 'other', 'what', 'time', 'up', 'go', 'about', 'than', 'into', 'could', 'state', 'only', 'new', 'year', 'some', 'take', 'come', 'these', 'know', 'see', 'use', 'get', 'like', 'then', 'first', 'any', 'work', 'now', 'many', 'such', 'give', 'over', 'think', 'most', 'even', 'find', 'day', 'also', 'after', 'way', 'many', 'must', 'look', 'before', 'great', 'back', 'through', 'long', 'where', 'much', 'should', 'well', 'people', 'down', 'own', 'just', 'U.S.', 'new', 'old']
+common_words = ['the', 'be', 'of', 'and', 'a', 'to', 'in', 'he', 'have', 'it', 'that', 'for', 'they', 'I', 'with', 'as', 'not', 'on', 'she', 'at', 'by', 'this', 'we', 'you', 'do', 'but', 'from', 'or', 'which', 'one', 'would', 'all', 'will', 'there', 'say', 'says' 'said', 'who', 'make', 'when', 'can', 'more', 'if', 'no', 'man', 'out', 'other', 'what', 'time', 'up', 'go', 'about', 'than', 'into', 'could', 'state', 'only', 'new', 'year', 'some', 'take', 'come', 'these', 'know', 'see', 'use', 'get', 'like', 'then', 'first', 'any', 'work', 'now', 'many', 'such', 'give', 'over', 'think', 'most', 'even', 'find', 'day', 'also', 'after', 'way', 'many', 'must', 'look', 'before', 'great', 'back', 'through', 'long', 'where', 'much', 'should', 'well', 'people', 'down', 'own', 'just', 'U.S.', 'new', 'old', 'best','health']
 
 freq = dict()
 dataCandidate = dict()
@@ -25,6 +25,46 @@ def updateFrequencyValue(word, numTime):
         freq[word] += numTime
     else:
         freq[word] = numTime
+
+def runReadSpike():
+    # extract headlines from bullet list
+    url = "https://readspike.com/"
+    response = requests.get(url, timeout=10)
+    content = soup(response.content, "html.parser")
+    for headline in (content.findAll(class_='bbc-section') + content.findAll(class_='engadget-section') + content.findAll(class_='arstechnica-section') + content.findAll(class_='newscientist-section') + content.findAll(class_='slashdot-section') + content.findAll(class_='wired-section') + content.findAll(class_='theonion-section')):
+        s = headline.text
+
+        doc = nlp(s)
+        prev = None
+        for w in doc:
+            inCommons : bool = w.lemma_.lower() in common_words
+            if((w.is_stop == False) and w.text.isalpha() and
+                (w.pos_ == "PROPN" or w.pos_ == "NOUN" or w.pos_ == "ADJ")):
+                if (not inCommons):
+                    updateFrequencyValue(w.text, 1) # add the word itself
+                if (prev != None and prev != w.text): # add a pair of words
+                    updateFrequencyValue(prev + " " + w.text, 2) # intentially do it twice
+                prev = w.text
+
+def runCNN():
+    # extract headlines from bullet list
+    url = "https://lite.cnn.io/en"
+    response = requests.get(url, timeout=10)
+    content = soup(response.content, "html.parser")
+    for headline in content.findAll('a'):
+        s = headline.text
+
+        doc = nlp(s)
+        prev = None
+        for w in doc:
+            inCommons : bool = w.lemma_.lower() in common_words
+            if((w.is_stop == False) and w.text.isalpha() and
+                (w.pos_ == "PROPN" or w.pos_ == "NOUN" or w.pos_ == "ADJ")):
+                if (not inCommons):
+                    updateFrequencyValue(w.text, 1) # add the word itself
+                if (prev != None and prev != w.text): # add a pair of words
+                    updateFrequencyValue(prev + " " + w.text, 2) # intentially do it twice
+                prev = w.text
 
 def runNPR():
     for i in range(1001, 1001 + NUM_ARTICLES_NEWS):
@@ -53,7 +93,7 @@ def runNPR():
                         prev = w.text
 
 def runReddit(freq_avg_from_news):
-    top_posts = reddit.subreddit('news').top("day", limit=NUM_ARTICLES_REDDIT)
+    top_posts = reddit.subreddit('worldnews').top("day", limit=NUM_ARTICLES_REDDIT)
     for post in top_posts:
         doc = nlp(post.title)
         prev = None
@@ -71,6 +111,8 @@ def runReddit(freq_avg_from_news):
 
 def runThroughArticles():
     # news articles
+    runReadSpike()
+    runCNN()
     runNPR()
 
     # reddit posts
@@ -99,7 +141,7 @@ def isARepeat(candidate) -> bool:
     for d in dataCandidate.keys():
         inData = d.split()
         for inDataWord in inData:
-            if (inDataWord in c):
+            if (inDataWord in c or inDataWord.lower() in c or inDataWord.capitalize() in c):
                 return True
     return False
 
