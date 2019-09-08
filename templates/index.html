@@ -6,8 +6,6 @@
       type="image/png" 
       href="static/img/icon.png">
     <title>News Cloud</title>
-    <script src="jquery-3.4.1.min.js"></script>
-
 </head>
 <body onload="startTime()">
 
@@ -41,11 +39,14 @@
     background-color: transparent;
     text-decoration: none;
     font-family: 'Manjari', sans-serif;
-
   }
 
   a:hover {
     text-decoration: underline;
+  }
+
+  #clock {
+    transition: opacity 3s;
   }
 
   </style>
@@ -101,21 +102,22 @@
 <script type="text/javascript">
   function normalize(wordList) {
     var max = Number.MIN_SAFE_INTEGER;
-    var optimalMax = 55;
-    var threshold = 15;
+    var min = Number.MAX_SAFE_INTEGER;
+    var optimalMax = 55.0;
+    var optimalMin = 5.0;
 
     for (var i = 0; i < words.length; i++) {
       if (wordList[i].value > max) {
         max = wordList[i].value;
       }
+      if (wordList[i].value < min) {
+        min = wordList[i].value;
+      }
     }
 
     for (var i = 0; i < words.length; i++) {
       if (max != 0){
-        wordList[i].value = parseInt(wordList[i].value * (optimalMax / max));
-      }
-      if (wordList[i].value < threshold) {
-        wordList[i].value = threshold;
+        wordList[i].value = (1 - Math.pow((1-(wordList[i].value / (max-min))), 1.75)) * (optimalMax - optimalMin) + optimalMin
       }
     }
     return wordList
@@ -131,7 +133,7 @@
 
   var startPoint = {
     x: window.innerWidth/2,
-    y: window.innerHeight * 3/10
+    y: window.innerHeight /3
   };
 
   var wordsDown = [];
@@ -193,6 +195,7 @@
   (function placeWords() {
       for (var i = 0; i < words.length; i++) {
           var word = createWordObject(words[i]);
+
           for (var j = 0; j < 360*3; j++) {
               if (spiral(j, function() {
                       if (!intersect(word, startPoint.x + x, startPoint.y + y)) {
@@ -206,37 +209,21 @@
       }
   })();
 
-colorLinks();
+  function colorLinks()
+  {
+      colors = ["#cf4f3f", "#f04c3c", "#fc7345", "#FFAB8F"];
+      var links = document.getElementsByTagName("a");
+      for(var i=0;i<links.length;i++)
+      {
+        links[i].style.color = colors[i % colors.length];
+        links[i].style.opacity = 1;
+      }
+  }    
 
-function delay(link){
-  link.animate({opacity:0.5},2000);
-}
+  colorLinks();
 
-function colorLinks()
-{
-    colors = ["#cf4f3f", "#f04c3c", "#fc7345", "#FFAB8F"];
-    var links = document.getElementsByTagName("a");
-    for(var i=0;i<links.length;i++)
-    {
-      links[i].style.color = colors[i % colors.length];
-      links[i].style.opacity = 1;
-      // links[i].hide().delay(300).queue(function() {links[i].fadeIn();});
-      // setTimeout(delay(link[i]), 5000);
-    }
-
-    //$(links).each(function() {
-    //  $(this).delay(400*index).fadeIn(300);
-    //});
-}
-
-  
-  // var groupText = document.createElement("div");
-/*   for (var i = 0; i < words.length; i++) {
-    placeWord(createWordObject(words[i]), 100,100);
-  } */
-
-  // document.getElementById("wordCloud").appendChild(groupText);
 </script>
+
 
 </body>
 </html>
