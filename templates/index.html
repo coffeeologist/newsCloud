@@ -6,6 +6,7 @@
       type="image/png" 
       href="static/img/icon.png">
     <title>News Cloud</title>
+    <script src="jquery-3.4.1.min.js"></script>
 
 </head>
 <body onload="startTime()">
@@ -33,6 +34,7 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+
   a:link {
     opacity:0;
     transition: opacity 3s;
@@ -41,9 +43,17 @@
     font-family: 'Manjari', sans-serif;
 
   }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
   </style>
 
 <script type="text/javascript">
+  var sheet = window.document.styleSheets[0];
+  sheet.insertRule('a:hover a { color: #FFFFFF; }', sheet.cssRules.length);
+
   function startTime() {
     var today = new Date();
     var h = today.getHours();
@@ -91,8 +101,8 @@
 <script type="text/javascript">
   function normalize(wordList) {
     var max = Number.MIN_SAFE_INTEGER;
-    var optimalMax = 50;
-    var threshold = 10;
+    var optimalMax = 55;
+    var threshold = 15;
 
     for (var i = 0; i < words.length; i++) {
       if (wordList[i].value > max) {
@@ -198,6 +208,10 @@
 
 colorLinks();
 
+function delay(link){
+  link.animate({opacity:0.5},2000);
+}
+
 function colorLinks()
 {
     colors = ["#cf4f3f", "#f04c3c", "#fc7345", "#FFAB8F"];
@@ -206,7 +220,13 @@ function colorLinks()
     {
       links[i].style.color = colors[i % colors.length];
       links[i].style.opacity = 1;
+      // links[i].hide().delay(300).queue(function() {links[i].fadeIn();});
+      // setTimeout(delay(link[i]), 5000);
     }
+
+    //$(links).each(function() {
+    //  $(this).delay(400*index).fadeIn(300);
+    //});
 }
 
   
