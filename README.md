@@ -15,3 +15,7 @@ Assuming Python 3.6 and above,
 ## Contributors
 - Jiachen (Amy) Liu
 - Allen Liu
+
+## Credits
+- News Cloud logo is original
+- Background image in the new tab belongs to Firewatch
